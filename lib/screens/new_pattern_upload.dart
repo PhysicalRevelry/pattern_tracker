@@ -13,7 +13,7 @@ class PatternUpload extends HookConsumerWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text('Name this pattern:'),
@@ -22,18 +22,22 @@ class PatternUpload extends HookConsumerWidget {
             TextFormField(),
             Text('Choose a pattern splice point: '),
             RadioListTile<Delineator>(
+              title: Text('Row'),
                 value: Delineator.row,
                 groupValue: scraper.delineator,
                 onChanged: (Delineator? value) {}),
             RadioListTile<Delineator>(
+                title: Text('R'),
                 value: Delineator.r,
                 groupValue: scraper.delineator,
                 onChanged: (Delineator? value) {}),
             RadioListTile<Delineator>(
+                title: Text('Step'),
                 value: Delineator.step,
                 groupValue: scraper.delineator,
                 onChanged: (Delineator? value) {}),
             RadioListTile<Delineator>(
+                title: Text('Custom'),
                 value: Delineator.custom,
                 groupValue: scraper.delineator,
                 onChanged: (Delineator? value) {

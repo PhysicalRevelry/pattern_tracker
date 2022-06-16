@@ -22,6 +22,9 @@ class StartScreen extends HookConsumerWidget {
               },
               child: Text("New Pattern"),
             ),
+            SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
               onPressed: () {},
               child: Text("Open Saved Pattern"),
