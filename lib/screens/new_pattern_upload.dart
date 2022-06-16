@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pattern_tracker/screens/pattern_splitter.dart';
 import 'package:pattern_tracker/state/scraper_state.dart';
 
 class PatternUpload extends HookConsumerWidget {
@@ -22,20 +23,26 @@ class PatternUpload extends HookConsumerWidget {
             TextFormField(),
             Text('Choose a pattern splice point: '),
             RadioListTile<Delineator>(
-              title: Text('Row'),
+                title: Text('Row'),
                 value: Delineator.row,
                 groupValue: scraper.delineator,
-                onChanged: (Delineator? value) {}),
+                onChanged: (Delineator? value) {
+                  scraper.handleDelineator(value);
+                }),
             RadioListTile<Delineator>(
                 title: Text('R'),
                 value: Delineator.r,
                 groupValue: scraper.delineator,
-                onChanged: (Delineator? value) {}),
+                onChanged: (Delineator? value) {
+                  scraper.handleDelineator(value);
+                }),
             RadioListTile<Delineator>(
                 title: Text('Step'),
                 value: Delineator.step,
                 groupValue: scraper.delineator,
-                onChanged: (Delineator? value) {}),
+                onChanged: (Delineator? value) {
+                  scraper.handleDelineator(value);
+                }),
             RadioListTile<Delineator>(
                 title: Text('Custom'),
                 value: Delineator.custom,
@@ -43,8 +50,24 @@ class PatternUpload extends HookConsumerWidget {
                 onChanged: (Delineator? value) {
                   scraper.handleDelineator(value);
                 }),
-            if (scraper.delineator == Delineator.custom)
-              TextFormField(),
+            if (scraper.delineator == Delineator.custom) TextFormField(),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: scraper.delineator == null ? Colors.grey : Colors.deepPurple,
+              ),
+              onPressed: () {
+                if (scraper.delineator == null){
+                  return;
+                }
+                else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PatternSplitter()));
+                }
+              },
+              child: Text(
+                "Next",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

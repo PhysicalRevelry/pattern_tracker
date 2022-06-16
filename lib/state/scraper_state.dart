@@ -17,7 +17,7 @@ final scraperProvider = ChangeNotifierProvider((_) => ScraperState());
 class ScraperState extends ChangeNotifier {
   bool isLoading = false;
 
-  Delineator? delineator = Delineator.row;
+  Delineator? delineator;
   List<String>? instructions;
 
   void handleDelineator(Delineator? value){
