@@ -16,6 +16,7 @@ class InstructionCard extends HookConsumerWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {}, child: Text('Split')),
               GestureDetector(
